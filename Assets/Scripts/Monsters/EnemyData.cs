@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace Vampire
+namespace CatAndHuman
 {
     [CreateAssetMenu(fileName = "NewEnemyData", menuName = "GameData/Enemy")]
     public class EnemyData : ScriptableObject
