@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 10e1881a2f5924f35991758e91508f2a
+  m_SerializeEntries:
+  - m_GUID: 296af48805bcd4f9ba29455452574e29
+    m_Address: Coin
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 48ca2b8202bfd1a439830ce7a0c38393
+    m_Address: TestBullet
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 530a8267844501f4abcc5da27665ee0d
+    m_Address: TestEnemy
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8aa8c4cb76e054949bb308e463d0f9c2
+    m_Address: Assets/Sprites/Weapons/Shuriken.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a1934d8b81b1b463789e100d3936db4f
+    m_Address: Assets/Sprites/Monsters/Boss.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a2f0a857f96b95d4db7802e1f767efbd
+    m_Address: Assets/Item_Collect_Gold_Exp_Simple.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Item
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b01234d5ba906804c92152e3e3cd916b
+    m_Address: Assets/Blueprints/Items/Drop_Item_Material_Simple.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Item
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b54259f44061cec4e8513c431182cf66
+    m_Address: Assets/Item_Collect_Gold_Exp_2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Item
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ddd683b981cccc3469581e741f824b32
+    m_Address: Reward_Container_EnemyKilledDrop_Simple
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - RewardContainer
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 7e3d66dc8cb9f42809017db168ce4406, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: cf5c0c75041284be4acdfa6e27364eda, type: 2}
+    - {fileID: 11400000, guid: 37dc2aeb796b642e3935734f05d4cf59, type: 2}
