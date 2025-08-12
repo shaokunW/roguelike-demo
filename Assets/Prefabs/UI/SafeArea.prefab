@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7744714996288908991
+--- !u!1 &8100392912330444618
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 181430359527054320}
-  - component: {fileID: 5046812291885256302}
-  m_Layer: 0
-  m_Name: Walk Boss Ability
+  - component: {fileID: 4546762139361754900}
+  - component: {fileID: 5877268125457883999}
+  m_Layer: 5
+  m_Name: SafeArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &181430359527054320
-Transform:
+--- !u!224 &4546762139361754900
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7744714996288908991}
+  m_GameObject: {fileID: 8100392912330444618}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5046812291885256302
+  m_AnchorMin: {x: 0, y: 0.03671706}
+  m_AnchorMax: {x: 1, y: 0.9492441}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5877268125457883999
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7744714996288908991}
+  m_GameObject: {fileID: 8100392912330444618}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b8b0cd707b3649148fef4f103528451, type: 3}
+  m_Script: {fileID: 11500000, guid: 3794869d8f5244ba8a6f86df41bba9ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkTime: 2.5
+  conformX: 1
+  conformY: 1
+  extraPadding: {x: 0, y: 0}
+  simulateInEditor: 0
+  notchPercent: 0.06
