@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Vampire
+namespace CatAndHuman
 {
     public class JoystickAreaFitter : MonoBehaviour
     {

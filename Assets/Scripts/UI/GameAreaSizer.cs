@@ -2,7 +2,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Vampire
+namespace CatAndHuman
 {
     /// GameArea ＝ 安全区全宽，高度 = inspector 给定；<=0 时用正方形
     [ExecuteAlways]

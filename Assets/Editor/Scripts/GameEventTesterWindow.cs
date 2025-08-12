@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Vampire
+namespace CatAndHuman
 {
     public class GameEventTesterWindow : EditorWindow
     {

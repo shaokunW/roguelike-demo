@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace Vampire
+namespace CatAndHuman
 {
     [CustomEditor(typeof(GlobalVariable<>), true)]
     public class GlobalVariableEditor : Editor

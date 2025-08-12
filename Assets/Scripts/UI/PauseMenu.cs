@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Vampire
+namespace CatAndHuman
 {
     public class PauseMenu : MonoBehaviour
     {

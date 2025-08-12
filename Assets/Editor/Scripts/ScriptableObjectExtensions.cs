@@ -1,8 +1,8 @@
 ﻿using System;
 using UnityEngine;
-using Vampire;
+using CatAndHuman;
 
-namespace Vampire
+namespace CatAndHuman
 {
     public class ScriptableObjectExtensions
     {

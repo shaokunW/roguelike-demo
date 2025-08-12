@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Vampire
+namespace CatAndHuman
 {
     // ExecuteAlways 属性非常适合这种布局适配脚本，让你在编辑器里就能看到效果
     [ExecuteAlways]

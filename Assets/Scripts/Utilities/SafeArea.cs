@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Vampire
+namespace CatAndHuman
 {
     /// <summary>
     /// 将挂载对象（必须是 RectTransform）限制在当前设备的 Safe Area 内。

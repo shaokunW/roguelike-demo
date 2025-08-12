@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-namespace Vampire
+namespace CatAndHuman
 {
     /// <summary>
     /// 浮动摇杆，可在屏幕任意位置点击生成
