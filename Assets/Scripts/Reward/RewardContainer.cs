@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CatAndHuman
 {
-    [CreateAssetMenu(fileName = "RewardContainer_", menuName = "Vampire/Reward/Container")]
+    [CreateAssetMenu(fileName = "RewardContainer_", menuName = "CatAndHuman/Reward/Container")]
     public class RewardContainer: ScriptableObject
     {
         public int id;

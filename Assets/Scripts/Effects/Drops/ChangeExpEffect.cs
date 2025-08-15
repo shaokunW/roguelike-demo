@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace CatAndHuman
 {
-    [CreateAssetMenu(fileName = "Effect_Change_Exp", menuName = "Vampire/Effects/Change/Exp")]
+    [CreateAssetMenu(fileName = "Effect_Change_Exp", menuName = "CatAndHuman/Effects/Change/Exp")]
     public class ChangeExpEffect : GameplayEffect
     {
         public int amount;

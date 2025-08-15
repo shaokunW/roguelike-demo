@@ -2,7 +2,7 @@
 
 namespace CatAndHuman
 {
-    [CreateAssetMenu(fileName = "DropRule_", menuName = "Vampire/Effects/Drop/Rule")]
+    [CreateAssetMenu(fileName = "DropRule_", menuName = "CatAndHuman/Effects/Drop/Rule")]
     public class DropRule: ScriptableObject
     {
         public float minRadius;

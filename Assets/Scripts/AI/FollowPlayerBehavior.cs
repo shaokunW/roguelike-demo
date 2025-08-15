@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace CatAndHuman.Core.AI
 {
-    [CreateAssetMenu(fileName = "AI_FollowPlayer", menuName = "Vampire/AI Behavior/FollowPlayer")]
+    [CreateAssetMenu(fileName = "AI_FollowPlayer", menuName = "CatAndHuman/AI Behavior/FollowPlayer")]
     public class FollowPlayerBehavior : AIBehavior
     {
         [Header("类型2: 跟踪玩家")]

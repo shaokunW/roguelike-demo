@@ -4,7 +4,7 @@ using UnityEngine.AddressableAssets;
 
 namespace CatAndHuman
 {
-    [CreateAssetMenu(fileName = "Item_", menuName = "Vampire/ItemDefinition")]
+    [CreateAssetMenu(fileName = "Item_", menuName = "CatAndHuman/ItemDefinition")]
     public class ItemDefinition: ScriptableObject
     {
         public int id;

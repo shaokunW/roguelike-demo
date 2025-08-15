@@ -5,7 +5,7 @@ namespace CatAndHuman
     /// <summary>
     /// 定义单个怪物在“生成”时所需的规则数据。
     /// </summary>
-    [CreateAssetMenu(fileName = "NewEnemyGenData", menuName = "Vampire/Data/Enemy Generation Data")]
+    [CreateAssetMenu(fileName = "NewEnemyGenData", menuName = "CatAndHuman/Data/Enemy Generation Data")]
     public class EnemyGenerationData : ScriptableObject
     {
         [Header("核心属性")]

@@ -2,7 +2,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New[TYPE]Variable", menuName = "Vampire/Create/Variable/[TYPE]")]
+[CreateAssetMenu(fileName = "New[TYPE]Variable", menuName = "CatAndHuman/Create/Variable/[TYPE]")]
 public class GlobalVariable<T> : ScriptableObject
 {
     public event Action OnValueChanged;
@@ -50,25 +50,25 @@ public class GlobalVariable<T> : ScriptableObject
         return variable.Value;
     }
     
-    [CreateAssetMenu(fileName = "NewFloatVariable", menuName = "Vampire/Create/Variable/Float")]
+    [CreateAssetMenu(fileName = "NewFloatVariable", menuName = "CatAndHuman/Create/Variable/Float")]
     public class FloatVariable : GlobalVariable<float> { }
 
     /// <summary>
     /// String 类型的全局变量。
     /// </summary>
-    [CreateAssetMenu(fileName = "NewStringVariable", menuName = "Vampire/Create/Variable/String")]
+    [CreateAssetMenu(fileName = "NewStringVariable", menuName = "CatAndHuman/Create/Variable/String")]
     public class StringVariable : GlobalVariable<string> { }
 
     /// <summary>
     /// Int 类型的全局变量。
     /// </summary>
-    [CreateAssetMenu(fileName = "NewIntVariable", menuName = "Vampire/Create/Variable/Int")]
+    [CreateAssetMenu(fileName = "NewIntVariable", menuName = "CatAndHuman/Create/Variable/Int")]
     public class IntVariable : GlobalVariable<int> { }
 
     /// <summary>
     /// Bool 类型的全局变量。
     /// </summary>
-    [CreateAssetMenu(fileName = "NewBoolVariable", menuName = "Vampire/Create/Variable/Bool")]
+    [CreateAssetMenu(fileName = "NewBoolVariable", menuName = "CatAndHuman/Create/Variable/Bool")]
     public class BoolVariable : GlobalVariable<bool> { }
     
 }

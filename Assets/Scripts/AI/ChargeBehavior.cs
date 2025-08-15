@@ -2,7 +2,7 @@
 
 namespace CatAndHuman.AI
 {
-    [CreateAssetMenu(fileName = "AI_Charge", menuName = "Vampire/AI Behavior/Charge")]
+    [CreateAssetMenu(fileName = "AI_Charge", menuName = "CatAndHuman/AI Behavior/Charge")]
     public class ChargeBehavior : AIBehavior
     {
         [Header("类型5: 冲锋")]

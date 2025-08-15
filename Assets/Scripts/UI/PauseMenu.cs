@@ -11,7 +11,10 @@ namespace CatAndHuman
         private bool paused = false;
         private bool timeIsFrozen = false;
 
-        public bool TimeIsFrozen { set => timeIsFrozen = value; }
+        public bool TimeIsFrozen
+        {
+            set => timeIsFrozen = value;
+        }
 
         public void PlayPause()
         {

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace CatAndHuman
 {
-    [CreateAssetMenu(fileName = "Effect_Change_Gold", menuName = "Vampire/Effects/Change/Gold")]
+    [CreateAssetMenu(fileName = "Effect_Change_Gold", menuName = "CatAndHuman/Effects/Change/Gold")]
     public class ChangeGoldEffect : GameplayEffect
     {
         public int amount;

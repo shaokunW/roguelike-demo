@@ -6,7 +6,7 @@ namespace CatAndHuman
     /// <summary>
     /// 定义一个难度等级的完整进程数据，包括预算、节奏和怪物列表。
     /// </summary>
-    [CreateAssetMenu(fileName = "LevelProgression_D0", menuName = "Vampire/Data/Level Progression Data")]
+    [CreateAssetMenu(fileName = "LevelProgression_D0", menuName = "CatAndHuman/Data/Level Progression Data")]
     public class LevelProgressionData : ScriptableObject
     {
         [Header("怪物池")]

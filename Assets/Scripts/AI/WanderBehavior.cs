@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace CatAndHuman.AI
 {
-    [CreateAssetMenu(fileName = "AI_Wander", menuName = "Vampire/AI Behavior/Wander")]
+    [CreateAssetMenu(fileName = "AI_Wander", menuName = "CatAndHuman/AI Behavior/Wander")]
     public class WanderBehavior : AIBehavior
     {
         [Header("类型4: 随机游荡")]

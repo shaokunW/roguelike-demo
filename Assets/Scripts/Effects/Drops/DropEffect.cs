@@ -2,7 +2,7 @@
 
 namespace CatAndHuman
 {
-    [CreateAssetMenu(fileName = "Effect_Drop", menuName = "Vampire/Effects/Drop/Effect")]
+    [CreateAssetMenu(fileName = "Effect_Drop", menuName = "CatAndHuman/Effects/Drop/Effect")]
     public class DropEffect: GameplayEffect
     {
         public DropRule dropRule;

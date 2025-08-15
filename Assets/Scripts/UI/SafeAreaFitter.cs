@@ -5,10 +5,8 @@
 
     [ExecuteAlways]
     [RequireComponent(typeof(RectTransform))]
-    [DefaultExecutionOrder(-500)]
     public class SafeAreaFitter : MonoBehaviour
     {
-        public bool conformX = true, conformY = true;
         public Vector2 extraPadding; // 额外内边距(像素)
         public bool simulateInEditor = false;
         [Range(0f, 0.2f)] public float notchPercent = 0.06f;
@@ -43,7 +41,13 @@
 
         void Apply()
         {
+            // 1) 屏幕尺寸未初始化时直接跳过，避免除以 0
+            if (Screen.width <= 0 || Screen.height <= 0)
+                return;
             var sa = GetSafeArea();
+            // 2) （可选）当 SafeArea 本身是空的也跳过
+            if (sa.width <= 0 || sa.height <= 0)
+                return;
             if (sa == _lastSafe && _lastScreen.x == Screen.width && _lastScreen.y == Screen.height)
                 return;
 
@@ -52,41 +56,16 @@
 
             Vector2 min = sa.position;
             Vector2 max = sa.position + sa.size;
-
-            if (conformX)
-            {
-                min.x += extraPadding.x;
-                max.x -= extraPadding.x;
-            }
-
-            if (conformY)
-            {
-                min.y += extraPadding.y;
-                max.y -= extraPadding.y;
-            }
-
+            Debug.Log($"[SafeAreaFitter] min={min}, max={max}, screen={_lastScreen}");
             min.x /= Screen.width;
             min.y /= Screen.height;
             max.x /= Screen.width;
             max.y /= Screen.height;
 
-            if (!conformX)
-            {
-                min.x = 0;
-                max.x = 1;
-            }
-
-            if (!conformY)
-            {
-                min.y = 0;
-                max.y = 1;
-            }
-
             _rt.anchorMin = min;
             _rt.anchorMax = max;
             _rt.offsetMin = Vector2.zero;
             _rt.offsetMax = Vector2.zero;
-
             CurrentSafeArea = sa;
             OnSafeAreaChanged?.Invoke(sa);
         }
