@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace CatAndHuman.UI.card
 {
@@ -10,14 +12,24 @@ namespace CatAndHuman.UI.card
         ShoppableCard
     }
 
+    [Serializable]
     public struct CardViewData
     {
-        public readonly Sprite icon;
-        public readonly string name;
-        public readonly string description;
-        public readonly List<string> tags;
-        public readonly bool isLocked;
-        public readonly List<(string, int, string)> attributes;
+        public int id;
+        public string iconKey;
+        public string displayName;
+        public string description;
+        public List<string> tags;
+        public bool isLocked;
+        public List<Attribute> attributes;
         public CardFormat cardFormat;
+    }
+
+    [Serializable]
+    public struct Attribute
+    {
+        public string prefix;
+        public string suffix;
+        public int value;
     }
 }

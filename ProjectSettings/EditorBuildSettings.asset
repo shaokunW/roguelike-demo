@@ -5,16 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Persistent Portrait.unity
     guid: e202641562faa3b4c97337f4066c21e1
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Main Menu Portrait.unity
     guid: 48ecbd23b19ed144ea9af9ed85b6b0d4
   - enabled: 1
     path: Assets/Scenes/Select Character Portrait.unity
     guid: 278c0f7a1122c9f44bb623952b2a6279
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Level 1 Portrait.unity
     guid: 13f9cce6bdccd5a4eb116b0adcbfb4f0
   m_configObjects:

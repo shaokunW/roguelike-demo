@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,66 +8,105 @@ using UnityEngine.UI;
 namespace CatAndHuman.UI.card
 {
     [Serializable]
-    public class CardView: MonoBehaviour
+    public class CardView : MonoBehaviour
     {
         private CardViewData _data;
-        [Header("col1")]
-        public Image icon;
+        private SpriteLease _spriteLease;
+        [Header("col1")] public Image icon;
         public TMP_Text nameText;
-        
-        [Header("col2")]
-        public TMP_Text tagsText;
+
+        [Header("col2")] public TMP_Text tagsText;
         public TMP_Text descText;
         public Transform attrListRoot;
         AttributeView attrPrefab;
-        List<AttributeView> _attrPool;
+        List<AttributeView> _attrPool = new();
 
-        [Header("col3")]
-        public GameObject lockIcon;
+        [Header("col3")] public GameObject lockIcon;
         public GameObject col3;
         public Button primaryButton;
         public TMP_Text primaryBtnText;
         public Button secondButton;
         public TMP_Text secondBtnText;
-        
-        [Header("Optional Dynamic Elements")]
-        public Image background; // 如果稀有度背景不同才用
-        
-        public void Bind(CardViewData data)
+
+        public event Action<CardViewData> OnBuy;
+        public event Action<CardViewData> OnCardLock;
+        public event Action<CardViewData> OnChoose;
+
+
+        [Header("Optional Dynamic Elements")] public Image background; // 如果稀有度背景不同才用
+
+        private void Awake()
         {
+            primaryButton.onClick.AddListener(OnClickPrimaryBtn);
+            secondButton.onClick.AddListener(OnClickSecondBtn);
+        }
+
+        public async Task Bind(CardViewData data)
+        {
+            _spriteLease?.Dispose(); 
             _data = data;
-            icon.sprite = data.icon;
-            nameText.text = data.name ?? "";
+
+            var task = SpriteLease.GetAsync(data.iconKey);
+            var (sprite, lease) = await task;
+            _spriteLease = lease;
+            icon.sprite = sprite;
+            nameText.text = data.displayName ?? "";
             descText.text = data.description ?? "";
             tagsText.text = string.Join(", ", data.tags) ?? "";
             RebuildAttributes(data.attributes);
-            
             ApplyFormat(data.cardFormat, data.isLocked);
         }
-        
-        void RebuildAttributes(List<(string name, int baseV, String unitStr)> attrs)
+
+        void RebuildAttributes(List<Attribute> attrs)
         {
             ClearAttributes();
             if (attrs == null) return;
 
             for (int i = 0; i < attrs.Count; i++)
             {
-                var (n, b, nv) = attrs[i];
+                var attr = attrs[i];
                 var item = Instantiate(attrPrefab, attrListRoot);
-                item.SetAttr(n, b);
+                item.SetAttr(attr.prefix, attr.value, attr.suffix);
                 _attrPool.Add(item);
             }
         }
 
-        
+
         void ClearAttributes()
         {
             for (int i = 0; i < _attrPool.Count; i++)
-                if (_attrPool[i]) Destroy(_attrPool[i].gameObject);
+                if (_attrPool[i])
+                    Destroy(_attrPool[i].gameObject);
             _attrPool.Clear();
         }
-        
-        
+
+        private void OnClickPrimaryBtn()
+        {
+            Debug.Log($"OnClickPrimaryBtn id={_data.id} name={_data.displayName}");
+            switch (_data.cardFormat)
+            {
+                case CardFormat.PoolCard:
+                    OnChoose?.Invoke(_data);
+                    break;
+
+                case CardFormat.ShoppableCard:
+                    OnBuy?.Invoke(_data);
+                    break;
+            }
+        }
+
+        private void OnClickSecondBtn()
+        {
+            Debug.Log($"OnClickSecondBtn id={_data.id} name={_data.displayName}");
+            switch (_data.cardFormat)
+            {
+                case CardFormat.ShoppableCard:
+                    OnCardLock?.Invoke(_data);
+                    break;
+            }
+        }
+
+
         void ApplyFormat(CardFormat f, bool isLocked)
         {
             // 样式切换
@@ -96,10 +136,16 @@ namespace CatAndHuman.UI.card
             }
         }
 
+        void OnDestroy() => _spriteLease?.Dispose();
+        
         void SetLockVisual(bool isLocked)
         {
             lockIcon.SetActive(isLocked);
         }
-        
+
+        public CardViewData GetData()
+        {
+            return _data;
+        }
     }
 }

@@ -419,6 +419,7 @@ GameObject:
   - component: {fileID: 4873274815507842791}
   - component: {fileID: 4926120100595568296}
   - component: {fileID: 3454032765787709348}
+  - component: {fileID: 5426243600130679124}
   m_Layer: 5
   m_Name: CardItem
   m_TagString: Untagged
@@ -509,6 +510,26 @@ MonoBehaviour:
   secondButton: {fileID: 7707079210727404644}
   secondBtnText: {fileID: 2422632441695541538}
   background: {fileID: 0}
+--- !u!114 &5426243600130679124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2760507929418727717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: 500
+  m_FlexibleWidth: 1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &3554447580551530593
 GameObject:
   m_ObjectHideFlags: 0
