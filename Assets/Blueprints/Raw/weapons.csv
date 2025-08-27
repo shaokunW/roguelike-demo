@@ -1,0 +1,17 @@
+id,code,displayName,description,icon,type,tags,baseDamage,baseCritChance,baseAttackCooldown,baseAttackRange,baseKnockback,meleeDamageScaling,rangedDamageScaling,elementalDamageScaling,engineeringScaling,statModifierCodes
+1,WEAPON_Fister,拳头,快速的出拳。,icon_weapon_fister,Melee,Unarmed,8,0.03,0.55,60,5,1,0,0,0,
+2,WEAPON_Pistol,手枪,一把标准的手枪。,icon_weapon_pistol,Ranged,Gun;Precise,12,0.03,0.8,300,8,0,1,0,0,
+3,WEAPON_Knife,小刀,攻击速度极快，暴击率高。,icon_weapon_knife,Melee,Blade;Precise,6,0.2,0.42,70,3,1,0,0,0,
+4,WEAPON_Stick,木棍,一根平平无奇的木棍。,icon_weapon_stick,Melee,Primitive,10,0.03,0.9,90,15,1,0,0,0,
+5,WEAPON_MedicalGun,医疗枪,伤害很低，但能让你再生。,icon_weapon_medicalgun,Ranged,Medical;Support;Gun,1,0,0.7,250,0,0,1,0,0,HPRegen_Flat_2
+6,WEAPON_Wrench,扳手,对建筑造成额外伤害。伤害同时受近战和工程学加成。,icon_weapon_wrench,Melee,Engineering;Tool,15,0.03,1.2,85,18,0.5,0,0,0.5,
+7,WEAPON_Shredder,粉碎者,射出大量子弹的冲锋枪，但会降低你的防御。,icon_weapon_shredder,Ranged,Gun,5,0.03,0.5,220,5,0,1,0,0,Armor_Flat_-1
+8,WEAPON_SpikyShield,尖刺盾,为你提供护甲，并对接触你的敌人造成伤害。伤害受护甲值加成。,icon_weapon_spikyshield,Melee,Shield,10,0,1.5,30,25,1,0,0,0,Armor_Flat_4
+9,WEAPON_Slingshot,弹弓,伤害随你的射程增加而增加。,icon_weapon_slingshot,Ranged,Primitive,10,0.03,0.9,280,10,0,1,0,0,
+10,WEAPON_Rock,石头,原始的投掷武器，击退效果好。,icon_weapon_rock,Ranged,Primitive,8,0.05,0.8,200,30,0.5,0.5,0,0,
+11,WEAPON_Sword,剑,一把可靠的剑，各方面都很均衡。,icon_weapon_sword,Melee,Blade,20,0.03,1.1,100,20,1,0,0,0,
+12,WEAPON_LaserGun,激光枪,发射一道能量光束，穿透敌人。,icon_weapon_lasergun,Ranged,Elemental;Gun,18,0,0.9,400,5,0,0.5,0.5,0,
+13,WEAPON_Shotgun,霰弹枪,近距离威力巨大，但距离远了伤害会衰减。,icon_weapon_shotgun,Ranged,Gun,15,0.03,1.3,180,25,0,1,0,0,
+14,WEAPON_Screwdriver,螺丝刀,攻击速度很快，但伤害较低。,icon_weapon_screwdriver,Melee,Engineering;Tool;Precise,4,0.1,0.35,65,2,0.75,0,0,0.25,
+15,WEAPON_Taser,泰瑟枪,有几率电击敌人，造成元素伤害。,icon_weapon_taser,Ranged,Elemental;Support,5,0,1,150,2,0,0.5,0.5,0,
+16,WEAPON_RocketLauncher,火箭发射器,发射会爆炸的火箭。伤害受爆炸伤害加成。特殊：伤害不受远程伤害属性影响。,icon_weapon_rocketlauncher,Ranged,Explosive;Gun,40,0.03,2.5,400,40,0,0,0,0,

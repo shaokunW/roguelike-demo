@@ -3,6 +3,7 @@ using CatAndHuman.UI.card;
 
 namespace CatAndHuman.UI.select
 {
+    [Serializable]
     public class UiSelectionState
     {
         public CardViewData SelectedTalent { get; private set; }

@@ -28,7 +28,7 @@ namespace CatAndHuman.UI.select
             }
             else
             {
-                talentCard.Bind(talent);
+                talentCard.Bind(talent, CardFormat.Introduction);
                 talentCard.gameObject.SetActive(true);
             }
 
@@ -39,7 +39,7 @@ namespace CatAndHuman.UI.select
             }
             else
             {
-                weaponCard.Bind(talent);
+                weaponCard.Bind(weapon, CardFormat.Introduction);
                 weaponCard.gameObject.SetActive(true);
             }
         }

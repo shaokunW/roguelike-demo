@@ -9,7 +9,7 @@ namespace CatAndHuman.UI.select
     {
         [Header("Page Animation")]
         [SerializeField] protected CanvasGroup canvasGroup;
-        [SerializeField, Range(0.05f, 0.6f)] private float  fadeDuration = 0.1f;
+        [SerializeField, Range(0.05f, 0.6f)] private float  fadeDuration = 0.05f;
 
         protected bool busy;
         

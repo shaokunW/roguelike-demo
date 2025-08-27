@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using CatAndHuman.Stat;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Pool;
@@ -18,16 +19,13 @@ namespace CatAndHuman
         [Header("核心配置")] [SerializeField] public GameObject enemyPrefab;
         [SerializeField] private LevelProgressionData levelProgression;
         [SerializeField] private TargetFinder targetFinder;
-        [SerializeField] public bool startWave;
-        [SerializeField] public int _currentWave;
-
 
         // --- 游戏状态 ---
-        private float _waveTimer;
-        private Coroutine _spawnCoroutine;
         private ObjectPool<EnemyController> _enemyPool;
         private Dictionary<string, AsyncOperationHandle<EnemyData>> _modelHandlesCache;
         private Dictionary<AssetReferenceSprite, AsyncOperationHandle<Sprite>> _spriteHandlesCache;
+        private WaveRuntimeSO _waveRuntime;
+
 
         void Awake()
         {
@@ -58,33 +56,17 @@ namespace CatAndHuman
             }
         }
 
-        private void Start()
-        {
-            startWave = true;
-        }
-
-        void Update()
-        {
-            if (startWave)
-            {
-                StartWave();
-                startWave = false;
-            }
-        }
-
 
         /// <summary>
         /// 启动一个指定的波次。
         /// </summary>
         /// <param name="waveNumber">要启动的波次数</param>
-        private void StartWave()
+        public Coroutine StartWave()
         {
-            _waveTimer = levelProgression.waveDuration;
-
-            Debug.Log($"GameManager: 准备第 {_currentWave} 波的数据。");
+            Debug.Log($"GameManager: 准备第 {_waveRuntime.currentWave} 波的数据。");
 
             // 使用固定的种子来保证刷怪顺序的可复现性
-            Random.InitState(_currentWave);
+            Random.InitState(_waveRuntime.currentWave);
 
             // 1. 生成怪物列表
             List<EnemyGenerationData> spawnList = GenerateSpawnListForCurrentWave();
@@ -97,21 +79,20 @@ namespace CatAndHuman
                 levelProgression.maxSpawnRadius
             );
 
-            // 3. 命令执行者开始工作
-            ExecuteSpawnWave(targetFinder.CurrentTargets.FirstOrDefault(), waveData);
+            return ExecuteSpawnWave(targetFinder.CurrentTargets.FirstOrDefault(), waveData);
         }
 
         private List<EnemyGenerationData> GenerateSpawnListForCurrentWave()
         {
             var list = new List<EnemyGenerationData>();
-            float budget = levelProgression.budgetPerWave.Evaluate(_currentWave);
+            float budget = levelProgression.budgetPerWave.Evaluate(_waveRuntime.currentWave);
 
             while (budget > 0)
             {
                 float totalWeight = 0;
                 foreach (var enemy in levelProgression.availableEnemies)
                 {
-                    totalWeight += enemy.spawnWeightCurve.Evaluate(_currentWave);
+                    totalWeight += enemy.spawnWeightCurve.Evaluate(_waveRuntime.currentWave);
                 }
 
                 if (totalWeight <= 0) break;
@@ -122,7 +103,7 @@ namespace CatAndHuman
 
                 foreach (var enemy in levelProgression.availableEnemies)
                 {
-                    weightSum += enemy.spawnWeightCurve.Evaluate(_currentWave);
+                    weightSum += enemy.spawnWeightCurve.Evaluate(_waveRuntime.currentWave);
                     if (randomValue <= weightSum)
                     {
                         chosenEnemy = enemy;
@@ -144,14 +125,9 @@ namespace CatAndHuman
             return list;
         }
 
-        public void ExecuteSpawnWave(Transform target, WaveData waveData)
+        public Coroutine ExecuteSpawnWave(Transform target, WaveData waveData)
         {
-            if (_spawnCoroutine != null)
-            {
-                StopCoroutine(_spawnCoroutine);
-            }
-
-            _spawnCoroutine = StartCoroutine(SpawnEnemiesCoroutine(target, waveData));
+            return StartCoroutine(SpawnEnemiesCoroutine(target, waveData));
         }
 
         private IEnumerator SpawnEnemiesCoroutine(Transform t, WaveData waveData)
@@ -196,10 +172,9 @@ namespace CatAndHuman
                         contorller.Initialize(data);
                     }
                 }
+
                 spawnedCount++;
             }
-
-            _spawnCoroutine = null;
         }
 
         //TODO should be a strategy passed from upper class[Relies on Map]

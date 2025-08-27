@@ -1,5 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
+using CatAndHuman.Configs.Runtime;
 using CatAndHuman.UI.card;
 using CatAndHuman.Utilities;
 using UnityEngine;
@@ -34,9 +35,11 @@ namespace CatAndHuman.UI.select
         [SerializeField] private Button tabOptions;
         [Header("Buttons")] [SerializeField] private Button startGameButton;
 
-        [Header("Debug Data")]
-        [SerializeField] public List<ItemDefinition> talents;
-        [SerializeField] public List<ItemDefinition> weapons;
+        [Header("Tables")]
+        public WeaponTable weaponTable;
+        public CharacterTable characterTable;
+
+        
         
         private Flow currentFlow;
         public UiSelectionState CurrentState { get; private set; }
@@ -49,11 +52,20 @@ namespace CatAndHuman.UI.select
         private void Start()
         {
             currentFlow = Flow.SelectTalent;
-            pageTalent.Bind(talents);
-            pageWeapon.Bind(weapons);
+            pageTalent.Bind(CharacterCards);
+            pageWeapon.Bind(WeaponCards);
             switcher.SwitchTo((int)PageId.Talent);
+            CurrentState.SelectTalentAndWeapon(default, default);
         }
+        
+        private List<CardViewData> CharacterCards => characterTable.rows
+            .Select(r => CardAdapter.Convert(r, false)).ToList();
+        
+        private List<CardViewData> WeaponCards => weaponTable.rows
+            .Select(r => CardAdapter.Convert(r, false)).ToList();
 
+        
+        
         private void Awake()
         {
             // Tab 点击（Button 版）
@@ -69,8 +81,9 @@ namespace CatAndHuman.UI.select
         {
             if (CurrentState.IsGameReady)
             {
-                GlobalGameState.Instance.Reset();
-                GlobalGameState.Instance.InitializeGameDta();
+                var character = characterTable.FindById(CurrentState.SelectedTalent.id);
+                var weapon = weaponTable.FindById(CurrentState.SelectedWeapon.id);
+                GameStateInitializer.Instance.InitializeGameData(character, weapon);
                 GameModeManager.Instance.ChangeGameMode(GameMode.InGame);
             }
         }

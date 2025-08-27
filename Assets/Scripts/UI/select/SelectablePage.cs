@@ -14,7 +14,7 @@ namespace CatAndHuman.UI.select
 
         public event Action<CardViewData> OnCardChoose;
 
-        public void Bind(List<ItemDefinition> items)
+        public void Bind(List<CardViewData> items)
         {
             
             ClearCards();
@@ -26,8 +26,7 @@ namespace CatAndHuman.UI.select
             {
                 var view = Instantiate(cardPrefab, contentRoot);
                 var cardView = view.GetComponent<CardView>();
-                var viewData = CardAdapter.Convert(item, false, CardFormat.PoolCard);
-                cardView.Bind(viewData);
+                cardView.Bind(item, CardFormat.PoolCard);
                 cardView.OnChoose += HandleCardChoose;
                 _cards.Add(cardView);
             }

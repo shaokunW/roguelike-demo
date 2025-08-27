@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: UI_Icons
+  m_EditorClassIdentifier: 
+  m_GroupName: UI_Icons
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 81bb1e1b2c329f44ab9f49515c0ec06b
+  m_SerializeEntries:
+  - m_GUID: 0eb27a97218f1c746b6e80e2d583f72e
+    m_Address: icon_weapon_knife
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6b0961c0489fe154b85548acc771e90e
+    m_Address: icon_weapon_fister
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6f94cfc9824368b4fb85ebcfbe343a93
+    m_Address: icon_char_wellrounded
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 78f4ec32cd544f94dac615cf8cab6991
+    m_Address: icon_char_crazy
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b64264c94679d4749bcf982c858648f1
+    m_Address: icon_weapon_pistol
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ee54c670f3acec6449e67c81755fef79
+    m_Address: icon_char_brawler
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 7e3d66dc8cb9f42809017db168ce4406, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 77e930ce476e15d44bf8262b082e7757, type: 2}
+    - {fileID: 11400000, guid: 7abee981d5d85a440aede2abf5f3b201, type: 2}

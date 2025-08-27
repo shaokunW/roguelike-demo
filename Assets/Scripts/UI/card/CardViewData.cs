@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CatAndHuman.Stat;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -21,15 +22,7 @@ namespace CatAndHuman.UI.card
         public string description;
         public List<string> tags;
         public bool isLocked;
-        public List<Attribute> attributes;
-        public CardFormat cardFormat;
+        public List<StatModifier> statModifiers;
     }
 
-    [Serializable]
-    public struct Attribute
-    {
-        public string prefix;
-        public string suffix;
-        public int value;
-    }
 }
