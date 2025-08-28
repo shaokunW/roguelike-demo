@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,7 +38,12 @@ namespace CatAndHuman
                 _lootDictionary.Add(mapping.EnemyID, mapping.RewardContainerId);
             }
         }
-        
+
+        public IEnumerable StartLootChoose()
+        {
+            yield break;
+        }
+
         /// <summary>
         /// 当监听到敌人死亡事件时，此方法被调用。
         /// </summary>
@@ -45,7 +51,7 @@ namespace CatAndHuman
         {
             Debug.Log($"[LootManager] Receive {eventData.EnemyID} {eventData.EnemyPosition}");
             // 1. 根据敌人ID查找对应的掉落表 (RewardContainer)
-            if (_lootDictionary.TryGetValue(eventData.EnemyID, out var container))
+            if (_lootDictionary.TryGetValue(eventData.EnemyID.ToString(), out var container))
             {
                 var itemIds = rewardManager.Select(container);
 

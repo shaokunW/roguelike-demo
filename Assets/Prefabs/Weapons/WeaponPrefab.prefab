@@ -119,3 +119,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8053268de240d5f489cea7e79f7cc12b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data:
+    id: 0
+    code: 
+    displayName: 
+    description: 
+    icon: 
+    baseAttackRange: 0
+    baseAttackCooldown: 0
+    baseDamage: 0
+    baseCritChance: 0
+    statModifiers: []
+    tags: []
+    bulletLaunchers: []
+  spriteRenderer: {fileID: 484623633596244413}

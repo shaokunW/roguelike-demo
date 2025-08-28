@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08541e8868cd4bd9b8d611b2b322e129, type: 3}
   m_Name: TestEnemyGenData
   m_EditorClassIdentifier: 
-  id: TestEnemy
+  id: 0
   threatCost: 1
   spawnWeightCurve:
     serializedVersion: 2

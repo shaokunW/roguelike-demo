@@ -10,7 +10,7 @@ namespace CatAndHuman
     {
         [Header("核心属性")]
         [Tooltip("敌人的唯一ID，用于识别")]
-        public string id;
+        public int id;
 
         [Header("刷怪系统参数")]
         [Tooltip("这个怪物在计算预算时的“威胁成本”")]

@@ -1,4 +1,5 @@
 ﻿using System;
+using CatAndHuman.Configs.Runtime;
 using UnityEngine;
 
 namespace CatAndHuman
@@ -7,19 +8,17 @@ namespace CatAndHuman
     {
         public StatsController statsController;
         public event Action<EnemyController> OnDeactivated;
-        public EnemyData enemyData;
+        public EnemyRow enemyData;
         public bool killedEventSent;
         public GameEvent<EnemyDiedEventData> DiedEvent;
-
-        public void Awake()
-        {
-            statsController = GetComponent<StatsController>();
-        }
-
-        public void Initialize(EnemyData data)
+        
+        public void Initialize(EnemyRow data)
         {
             this.enemyData = data;
             this.killedEventSent = false;
+            statsController._maxHp = data.baseHp;
+            statsController._currentHp = data.baseHp;
+
         }
 
         // Update is called once per frame

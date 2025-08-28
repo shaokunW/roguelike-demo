@@ -2,10 +2,7 @@ using UnityEngine;
 
 namespace CatAndHuman
 {
-
-
-// [ExecuteInEditMode] 属性让这个脚本可以在编辑器模式下运行，
-// 这样你调整参数时就能立即看到场景中的变化，非常方便！
+    
     [ExecuteInEditMode]
     public class ArenaGenerator : MonoBehaviour
     {
@@ -23,24 +20,9 @@ namespace CatAndHuman
         private Transform wallLeft;
         private Transform wallRight;
 
-        // 当脚本被加载或Inspector中的值被改变时调用
-        // 这是实现编辑器内实时更新的关键
-        private void OnValidate()
-        {
-            // 延迟调用GenerateWalls，以避免在OnValidate中直接修改场景可能引发的Unity编辑器问题
-            // 这是更安全、更专业的做法
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.delayCall += () =>
-            {
-                if (this != null) // 确保对象没有被销毁
-                {
-                    GenerateWalls();
-                }
-            };
-#endif
-        }
 
-        private void GenerateWalls()
+        [ContextMenu("Generate Walls")]
+        public void GenerateWalls()
         {
             // 1. 清理旧的墙壁（如果存在）
             // 使用 transform.Find 来查找子对象

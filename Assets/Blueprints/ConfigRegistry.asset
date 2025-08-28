@@ -19,3 +19,6 @@ MonoBehaviour:
   - csvName: weapons
     assetName: WeaponTable
     script: {fileID: 11500000, guid: 3d052601108b4d569c2d9c8cd100e253, type: 3}
+  - csvName: enemies
+    assetName: EnemyTable
+    script: {fileID: 11500000, guid: 45389eea501e48ebbfbb69e80822f092, type: 3}

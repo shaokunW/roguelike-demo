@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using CatAndHuman.Configs.Runtime;
 using UnityEngine;
 
 namespace CatAndHuman
@@ -8,36 +9,21 @@ namespace CatAndHuman
     [RequireComponent(typeof(SpriteRenderer), typeof(Animator))]
     public class WeaponController : MonoBehaviour
     {
-        // --- 引用 ---
-        public WeaponData data;
-        private Animator animator;
-        private SpriteRenderer spriteRenderer;
+        public WeaponRow data;
+        [SerializeField] private SpriteRenderer spriteRenderer;
 
-        // --- 内部状态 ---
         private float fireCountdown;
 
-        // --- 公共属性查询 ---
-        /// <summary>
-        /// 初始化武器，只关联静态数据。
-        /// </summary>
-        public void Initialize(WeaponData data)
+        public async void Initialize(WeaponRow data)
         {
             this.data = data;
-            this.animator = GetComponent<Animator>();
-            this.spriteRenderer = GetComponent<SpriteRenderer>();
-
-            // 应用数据
-            if (this.spriteRenderer != null && data.graphics != null)
+            if (data?.icon != null)
             {
-                this.spriteRenderer.sprite = data.graphics;
-                Debug.Log("configure sprite");
+                var sprite = await SpriteProvider.Instance.AcquireAsync(data.icon);
+                spriteRenderer.sprite = sprite;
             }
 
-            if (this.animator != null && data.animatorController != null)
-            {
-                this.animator.runtimeAnimatorController = data.animatorController;
-                Debug.Log("configure animatorController");
-            }
+            fireCountdown = data.baseAttackCooldown;
         }
 
         /// <summary>
@@ -68,9 +54,6 @@ namespace CatAndHuman
         public void Fire(Vector2 fireDirection, float nextCooldown, LayerMask layerMask, float maxDistance,
             DamageAbility ability)
         {
-            // ability.AddDamage(weaponData.);
-            if (animator != null) animator.SetTrigger("Fire");
-
             foreach (var launcher in data.bulletLaunchers)
             {
                 float finalAngle = launcher.angleOffset +
@@ -101,7 +84,7 @@ namespace CatAndHuman
         {
             if (cooldownModifier != null)
             {
-                this.fireCountdown = cooldownModifier(this.fireCountdown);
+                fireCountdown = cooldownModifier(this.fireCountdown);
             }
         }
     }

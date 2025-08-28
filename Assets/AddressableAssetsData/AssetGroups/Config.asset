@@ -23,6 +23,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - config
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9798a0085307ed94686b2115c5c9726f
+    m_Address: Assets/Blueprints/Bundles/EnemyTable.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - config
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ec10229d4663ad247a8531d2c458e78e
     m_Address: Assets/Blueprints/Bundles/WeaponTable.asset
     m_ReadOnly: 0

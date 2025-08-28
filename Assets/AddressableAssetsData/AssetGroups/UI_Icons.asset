@@ -17,8 +17,18 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 81bb1e1b2c329f44ab9f49515c0ec06b
   m_SerializeEntries:
+  - m_GUID: 02288e18bb6844bd09c390d973e71969
+    m_Address: icon_enemy_charger
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0eb27a97218f1c746b6e80e2d583f72e
     m_Address: icon_weapon_knife
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4a53ef156a05949b693de4f347057d87
+    m_Address: icon_enemy_rusher
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -39,6 +49,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b64264c94679d4749bcf982c858648f1
     m_Address: icon_weapon_pistol
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d3e94cac8c7c24beba6a3c2a75d4bdab
+    m_Address: icon_enemy_spitter
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d6a1eaefc567d4af7931ddc84b58ffa8
+    m_Address: icon_enemy_slasher
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

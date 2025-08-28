@@ -1,0 +1,287 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45389eea501e48ebbfbb69e80822f092, type: 3}
+  m_Name: EnemyTable
+  m_EditorClassIdentifier: 
+  rows:
+  - id: 1
+    code: enemy_slasher
+    displayName: enemy_slasher
+    description: Charges at the player.
+    icon: icon_enemy_slasher
+    baseHp: 1
+    hpPerWave: 5
+    baseSpeed: 240
+    baseDamage: 1
+    damagePerWave: 0.6
+    knockbackResistance: 1
+    materialsDropped: 3
+    consumableDropRate: 1
+    lootCrateDropRate: 0.2
+    firstWave: 1
+    tags: []
+  - id: 2
+    code: enemy_rusher
+    displayName: enemy_rusher
+    description: Charges at the player.
+    icon: icon_enemy_rusher
+    baseHp: 2
+    hpPerWave: 5
+    baseSpeed: 450
+    baseDamage: 1
+    damagePerWave: 0.6
+    knockbackResistance: 0
+    materialsDropped: 3
+    consumableDropRate: 1
+    lootCrateDropRate: 0.01
+    firstWave: 1
+    tags: []
+  - id: 3
+    code: enemy_spitter
+    displayName: enemy_spitter
+    description: Stops to shoot a projectile.
+    icon: icon_enemy_spitter
+    baseHp: 3
+    hpPerWave: 5
+    baseSpeed: 220
+    baseDamage: 1
+    damagePerWave: 0.6
+    knockbackResistance: 0
+    materialsDropped: 3
+    consumableDropRate: 1
+    lootCrateDropRate: 0.01
+    firstWave: 2
+    tags: []
+  - id: 4
+    code: enemy_charger
+    displayName: enemy_charger
+    description: Charges in a straight line after a delay.
+    icon: icon_enemy_charger
+    baseHp: 4
+    hpPerWave: 5
+    baseSpeed: 300
+    baseDamage: 1
+    damagePerWave: 0.6
+    knockbackResistance: 0.3
+    materialsDropped: 4
+    consumableDropRate: 1
+    lootCrateDropRate: 0.01
+    firstWave: 2
+    tags: []
+  - id: 5
+    code: enemy_blob
+    displayName: enemy_blob
+    description: Shoots a projectile. Spawns 2 Mini Blobs on death.
+    icon: icon_enemy_blob
+    baseHp: 5
+    hpPerWave: 5
+    baseSpeed: 180
+    baseDamage: 1
+    damagePerWave: 0.6
+    knockbackResistance: 0
+    materialsDropped: 3
+    consumableDropRate: 1
+    lootCrateDropRate: 0.01
+    firstWave: 3
+    tags: []
+  - id: 6
+    code: enemy_miniblob
+    displayName: enemy_miniblob
+    description: Charges at the player.
+    icon: icon_enemy_miniblob
+    baseHp: 6
+    hpPerWave: 5
+    baseSpeed: 180
+    baseDamage: 1
+    damagePerWave: 0.6
+    knockbackResistance: 0
+    materialsDropped: 1
+    consumableDropRate: 1
+    lootCrateDropRate: 0.01
+    firstWave: 3
+    tags: []
+  - id: 7
+    code: enemy_buffedrusher
+    displayName: enemy_buffedrusher
+    description: Charges at the player. Moves faster when near other enemies.
+    icon: icon_enemy_buffedrusher
+    baseHp: 7
+    hpPerWave: 5
+    baseSpeed: 500
+    baseDamage: 1
+    damagePerWave: 0.6
+    knockbackResistance: 0.1
+    materialsDropped: 4
+    consumableDropRate: 1
+    lootCrateDropRate: 0.01
+    firstWave: 5
+    tags: []
+  - id: 8
+    code: enemy_buffedspitter
+    displayName: enemy_buffedspitter
+    description: Stops to shoot 3 projectiles in a spread.
+    icon: icon_enemy_buffedspitter
+    baseHp: 8
+    hpPerWave: 5
+    baseSpeed: 250
+    baseDamage: 1
+    damagePerWave: 0.6
+    knockbackResistance: 0.1
+    materialsDropped: 4
+    consumableDropRate: 1
+    lootCrateDropRate: 0.01
+    firstWave: 5
+    tags: []
+  - id: 9
+    code: enemy_dasher
+    displayName: enemy_dasher
+    description: Stops to quickly dash at the player.
+    icon: icon_enemy_dasher
+    baseHp: 9
+    hpPerWave: 5
+    baseSpeed: 550
+    baseDamage: 1
+    damagePerWave: 0.6
+    knockbackResistance: 0.2
+    materialsDropped: 5
+    consumableDropRate: 1
+    lootCrateDropRate: 0.01
+    firstWave: 6
+    tags: []
+  - id: 10
+    code: enemy_tank
+    displayName: enemy_tank
+    description: Slow-moving with high health.
+    icon: icon_enemy_tank
+    baseHp: 10
+    hpPerWave: 5
+    baseSpeed: 125
+    baseDamage: 1
+    damagePerWave: 0.6
+    knockbackResistance: 0.7
+    materialsDropped: 5
+    consumableDropRate: 1
+    lootCrateDropRate: 0.01
+    firstWave: 6
+    tags: []
+  - id: 11
+    code: enemy_turret
+    displayName: enemy_turret
+    description: Stationary. Shoots a projectile.
+    icon: icon_enemy_turret
+    baseHp: 11
+    hpPerWave: 5
+    baseSpeed: 0
+    baseDamage: 1
+    damagePerWave: 0.6
+    knockbackResistance: 1
+    materialsDropped: 5
+    consumableDropRate: 1
+    lootCrateDropRate: 0.01
+    firstWave: 7
+    tags: []
+  - id: 12
+    code: enemy_bigspitter
+    displayName: enemy_bigspitter
+    description: Stops to shoot a large, slow projectile.
+    icon: icon_enemy_bigspitter
+    baseHp: 12
+    hpPerWave: 5
+    baseSpeed: 150
+    baseDamage: 1
+    damagePerWave: 0.6
+    knockbackResistance: 0.5
+    materialsDropped: 6
+    consumableDropRate: 1
+    lootCrateDropRate: 0.01
+    firstWave: 8
+    tags: []
+  - id: 13
+    code: enemy_bat
+    displayName: enemy_bat
+    description: Moves in a swerving pattern.
+    icon: icon_enemy_bat
+    baseHp: 13
+    hpPerWave: 5
+    baseSpeed: 350
+    baseDamage: 1
+    damagePerWave: 0.6
+    knockbackResistance: 0
+    materialsDropped: 4
+    consumableDropRate: 1
+    lootCrateDropRate: 0.01
+    firstWave: 11
+    tags: []
+  - id: 14
+    code: enemy_acidspewer
+    displayName: enemy_acidspewer
+    description: Shoots a projectile that leaves a damaging pool on the ground.
+    icon: icon_enemy_acidspewer
+    baseHp: 14
+    hpPerWave: 5
+    baseSpeed: 200
+    baseDamage: 1
+    damagePerWave: 0.6
+    knockbackResistance: 0.2
+    materialsDropped: 6
+    consumableDropRate: 1
+    lootCrateDropRate: 0.01
+    firstWave: 11
+    tags: []
+  - id: 15
+    code: enemy_monk
+    displayName: enemy_monk
+    description: Stops to shoot a fast projectile. Teleports away when damaged.
+    icon: icon_enemy_monk
+    baseHp: 15
+    hpPerWave: 5
+    baseSpeed: 300
+    baseDamage: 1
+    damagePerWave: 0.6
+    knockbackResistance: 0.3
+    materialsDropped: 7
+    consumableDropRate: 1
+    lootCrateDropRate: 0.01
+    firstWave: 13
+    tags: []
+  - id: 16
+    code: enemy_bull
+    displayName: enemy_bull
+    description: Charges at the player. Becomes faster after being damaged.
+    icon: icon_enemy_bull
+    baseHp: 16
+    hpPerWave: 5
+    baseSpeed: 280
+    baseDamage: 1
+    damagePerWave: 0.6
+    knockbackResistance: 0.8
+    materialsDropped: 10
+    consumableDropRate: 1
+    lootCrateDropRate: 0.01
+    firstWave: 14
+    tags: []
+  - id: 17
+    code: enemy_worm
+    displayName: enemy_worm
+    description: Moves randomly. Invulnerable while burrowed underground.
+    icon: icon_enemy_worm
+    baseHp: 17
+    hpPerWave: 5
+    baseSpeed: 350
+    baseDamage: 1
+    damagePerWave: 0.6
+    knockbackResistance: 0.4
+    materialsDropped: 8
+    consumableDropRate: 1
+    lootCrateDropRate: 0.01
+    firstWave: 15
+    tags: []

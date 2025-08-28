@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CatAndHuman.Stat;
 using UnityEngine;
 
@@ -33,7 +34,7 @@ namespace CatAndHuman.Configs.Runtime
         public int baseMeleeDamage;
         public int baseRangeDamage;
         public int baseElementalDamage;
-        public int baseCritChance;
+        public float baseCritChance;
         public int baseLifeSteal;
         public int baseArmor;
         public int baseDodge;
@@ -48,6 +49,32 @@ namespace CatAndHuman.Configs.Runtime
         public int maxWeaponCount;
         public List<string> defaultWeaponCodes;
         public List<string> defaultItemCodes;
-
+        
+        public static CharacterRow Deserialize(Dictionary<string, string> data)
+        {
+            return new CharacterRow
+            {
+                // --- Basic Info ---
+                id = DesrUtils.ParseInt(data,"id"),
+                code = data["code"],
+                displayName = data["displayName"], 
+                description = data["description"],
+                icon = data["icon"],
+        
+                // --- Base Stats ---
+                baseMaxHp = DesrUtils.ParseInt(data,"baseMaxHp"),
+                baseSpeed = DesrUtils.ParseInt(data,"baseSpeed"),
+                baseDamage = DesrUtils.ParseInt(data,"baseDamage"),
+                baseCritChance = DesrUtils.ParseFloat(data,"baseCritChance"),
+                baseArmor = DesrUtils.ParseInt(data,"baseArmor"),
+                baseDodge = DesrUtils.ParseInt(data,"baseDodge"),
+                baseHpRegen = DesrUtils.ParseInt(data,"baseHpRegen"),
+                baseHarvesting = DesrUtils.ParseInt(data,"baseHarvesting"),
+                baseAttackRange = DesrUtils.ParseInt(data,"baseAttackRange"),
+                basePickupRange = DesrUtils.ParseInt(data,"basePickupRange"),
+                // --- List ---
+                statModifiers = DesrUtils.ParseList(data,"statModifierCodes").Select(StatModifier.Parse).ToList()
+            };
+        }
     }
 }

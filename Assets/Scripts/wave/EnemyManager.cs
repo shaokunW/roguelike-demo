@@ -1,30 +1,29 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using CatAndHuman.Configs.Runtime;
 using CatAndHuman.Stat;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.Pool;
-using UnityEngine.ResourceManagement.AsyncOperations;
 using Random = UnityEngine.Random;
 
 namespace CatAndHuman
 {
+    [ExecuteAlways]
     public class EnemyManager : MonoBehaviour
     {
         public static EnemyManager Instance { get; private set; }
 
 
         [Header("核心配置")] [SerializeField] public GameObject enemyPrefab;
+        public WaveRuntimeSO waveRuntime;
+        public EnemyTable enemyTable;
+
         [SerializeField] private LevelProgressionData levelProgression;
         [SerializeField] private TargetFinder targetFinder;
 
         // --- 游戏状态 ---
         private ObjectPool<EnemyController> _enemyPool;
-        private Dictionary<string, AsyncOperationHandle<EnemyData>> _modelHandlesCache;
-        private Dictionary<AssetReferenceSprite, AsyncOperationHandle<Sprite>> _spriteHandlesCache;
-        private WaveRuntimeSO _waveRuntime;
 
 
         void Awake()
@@ -46,8 +45,6 @@ namespace CatAndHuman
                     collectionCheck: true,
                     defaultCapacity: 1000,
                     maxSize: 1000);
-                _modelHandlesCache = new Dictionary<string, AsyncOperationHandle<EnemyData>>();
-                _spriteHandlesCache = new Dictionary<AssetReferenceSprite, AsyncOperationHandle<Sprite>>();
                 DontDestroyOnLoad(gameObject);
             }
             else
@@ -61,12 +58,13 @@ namespace CatAndHuman
         /// 启动一个指定的波次。
         /// </summary>
         /// <param name="waveNumber">要启动的波次数</param>
+        [ContextMenu("Start Wave")]
         public Coroutine StartWave()
         {
-            Debug.Log($"GameManager: 准备第 {_waveRuntime.currentWave} 波的数据。");
+            Debug.Log($"GameManager: 准备第 {waveRuntime.currentWave} 波的数据。");
 
             // 使用固定的种子来保证刷怪顺序的可复现性
-            Random.InitState(_waveRuntime.currentWave);
+            Random.InitState(waveRuntime.currentWave);
 
             // 1. 生成怪物列表
             List<EnemyGenerationData> spawnList = GenerateSpawnListForCurrentWave();
@@ -79,20 +77,21 @@ namespace CatAndHuman
                 levelProgression.maxSpawnRadius
             );
 
-            return ExecuteSpawnWave(targetFinder.CurrentTargets.FirstOrDefault(), waveData);
+            Transform target = targetFinder.CurrentTargets.FirstOrDefault();
+            return StartCoroutine(SpawnEnemiesCoroutine(target, waveData));
         }
 
         private List<EnemyGenerationData> GenerateSpawnListForCurrentWave()
         {
             var list = new List<EnemyGenerationData>();
-            float budget = levelProgression.budgetPerWave.Evaluate(_waveRuntime.currentWave);
+            float budget = levelProgression.budgetPerWave.Evaluate(waveRuntime.currentWave);
 
             while (budget > 0)
             {
                 float totalWeight = 0;
                 foreach (var enemy in levelProgression.availableEnemies)
                 {
-                    totalWeight += enemy.spawnWeightCurve.Evaluate(_waveRuntime.currentWave);
+                    totalWeight += enemy.spawnWeightCurve.Evaluate(waveRuntime.currentWave);
                 }
 
                 if (totalWeight <= 0) break;
@@ -103,7 +102,7 @@ namespace CatAndHuman
 
                 foreach (var enemy in levelProgression.availableEnemies)
                 {
-                    weightSum += enemy.spawnWeightCurve.Evaluate(_waveRuntime.currentWave);
+                    weightSum += enemy.spawnWeightCurve.Evaluate(waveRuntime.currentWave);
                     if (randomValue <= weightSum)
                     {
                         chosenEnemy = enemy;
@@ -125,11 +124,6 @@ namespace CatAndHuman
             return list;
         }
 
-        public Coroutine ExecuteSpawnWave(Transform target, WaveData waveData)
-        {
-            return StartCoroutine(SpawnEnemiesCoroutine(target, waveData));
-        }
-
         private IEnumerator SpawnEnemiesCoroutine(Transform t, WaveData waveData)
         {
             int spawnedCount = 0;
@@ -149,32 +143,19 @@ namespace CatAndHuman
 
                 // 3. 生成敌人
                 EnemyGenerationData enemyToSpawn = spawnList[spawnedCount];
+                var enemyRow = enemyTable.FindById(enemyToSpawn.id);
                 Vector2 spawnPosition = GetSpawnPosition(t, waveData.MinSpawnRadius, waveData.MaxSpawnRadius);
-                var handle = GetOrLoadData(enemyToSpawn.id);
-                if (handle.Status != AsyncOperationStatus.Succeeded)
-                {
-                    Debug.LogError($"Failed to load for id: {enemyToSpawn.id}");
-                }
-                else
-                {
-                    // INIT TRIGGER
-                    var data = handle.Result;
-                    var spiritHandle = GetOrLoadSprite(data.graphicsId);
-                    if (spiritHandle.Status != AsyncOperationStatus.Succeeded)
-                    {
-                        Debug.LogError($"Failed to load for id: {data.graphicsId}");
-                    }
-                    else
-                    {
-                        var sprite = spiritHandle.Result;
-                        var contorller = GetFromPool(spawnPosition, Quaternion.identity);
-                        contorller.gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
-                        contorller.Initialize(data);
-                    }
-                }
-
+                Spawn(spawnPosition, enemyRow);
                 spawnedCount++;
             }
+        }
+
+        private async void Spawn(Vector2 position, EnemyRow data)
+        {
+            var sprite = await SpriteProvider.Instance.AcquireAsync(data.icon);
+            var contorller = GetFromPool(position, Quaternion.identity);
+            contorller.gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
+            contorller.Initialize(data);
         }
 
         //TODO should be a strategy passed from upper class[Relies on Map]
@@ -187,32 +168,6 @@ namespace CatAndHuman
             float radius = Random.Range(minRadius, maxRadius);
 
             return playerPos + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * radius;
-        }
-
-        private AsyncOperationHandle<EnemyData> GetOrLoadData(string id)
-        {
-            if (_modelHandlesCache.TryGetValue(id, out AsyncOperationHandle<EnemyData> handle))
-            {
-                return handle;
-            }
-
-            // 如果没有，则开始异步加载，并将操作句柄存入缓存
-            AsyncOperationHandle<EnemyData> newHandle = Addressables.LoadAssetAsync<EnemyData>(id);
-            _modelHandlesCache[id] = newHandle;
-            return newHandle;
-        }
-
-        private AsyncOperationHandle<Sprite> GetOrLoadSprite(AssetReferenceSprite graphicId)
-        {
-            if (_spriteHandlesCache.TryGetValue(graphicId, out AsyncOperationHandle<Sprite> handle))
-            {
-                return handle;
-            }
-
-            // 如果没有，则开始异步加载，并将操作句柄存入缓存
-            var newHandle = graphicId.LoadAssetAsync<Sprite>();
-            _spriteHandlesCache[graphicId] = newHandle;
-            return newHandle;
         }
 
         private EnemyController GetFromPool(Vector2 pos, Quaternion quaternion)
