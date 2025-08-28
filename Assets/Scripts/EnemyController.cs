@@ -9,13 +9,15 @@ namespace CatAndHuman
         public StatsController statsController;
         public event Action<EnemyController> OnDeactivated;
         public EnemyRow enemyData;
+        public SpriteRenderer spriteRenderer;
         public bool killedEventSent;
         public GameEvent<EnemyDiedEventData> DiedEvent;
         
-        public void Initialize(EnemyRow data)
+        public async void Initialize(EnemyRow data)
         {
             this.enemyData = data;
             this.killedEventSent = false;
+            spriteRenderer.sprite = await SpriteProvider.Instance.AcquireAsync(data.icon);
             statsController._maxHp = data.baseHp;
             statsController._currentHp = data.baseHp;
 

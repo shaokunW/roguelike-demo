@@ -39,6 +39,7 @@ namespace CatAndHuman.Editor.Scripts
 
         private static void ImportByRegistry(TableEntry entry)
         {
+            Debug.Log($"Start loading {entry.assetName}");
             var csvPath = Path.Combine(RAW_DIR, entry.csvName + ".csv");
             if (!File.Exists(csvPath))
             {
@@ -54,7 +55,7 @@ namespace CatAndHuman.Editor.Scripts
             if (rowType == null) throw new Exception($"rows must be List<T> in {soType.Name}");
             var rows = ReadCsv(csvPath, rowType);
             var outPath = Path.Combine(OUT_DIR, entry.assetName + ".asset");
-            var asset = AssetDatabase.LoadAssetAtPath(outPath, rowType);
+            var asset = AssetDatabase.LoadAssetAtPath(outPath, soType);
             if (asset == null)
             {
                 asset = ScriptableObject.CreateInstance(soType) as ScriptableObject;
@@ -73,6 +74,7 @@ namespace CatAndHuman.Editor.Scripts
             {
                 resultList.Add(Deserializer.Deserialize(rowType, keyVal)); 
             }
+            Debug.Log($"loading {path} size {resultList.Count}");
             return resultList;
         }
         

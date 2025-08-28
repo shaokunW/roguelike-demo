@@ -150,12 +150,10 @@ namespace CatAndHuman
             }
         }
 
-        private async void Spawn(Vector2 position, EnemyRow data)
+        private void Spawn(Vector2 position, EnemyRow data)
         {
-            var sprite = await SpriteProvider.Instance.AcquireAsync(data.icon);
-            var contorller = GetFromPool(position, Quaternion.identity);
-            contorller.gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
-            contorller.Initialize(data);
+            var controller = GetFromPool(position, Quaternion.identity);
+            controller.Initialize(data);
         }
 
         //TODO should be a strategy passed from upper class[Relies on Map]

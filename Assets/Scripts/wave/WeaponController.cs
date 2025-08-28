@@ -54,16 +54,23 @@ namespace CatAndHuman
         public void Fire(Vector2 fireDirection, float nextCooldown, LayerMask layerMask, float maxDistance,
             DamageAbility ability)
         {
-            foreach (var launcher in data.bulletLaunchers)
-            {
-                float finalAngle = launcher.angleOffset +
-                                   UnityEngine.Random.Range(-launcher.randomSpread, launcher.randomSpread);
-                Vector2 bulletDirection = Quaternion.Euler(0, 0, finalAngle) * fireDirection;
-                // 调用子弹管理器生成子弹
-                BulletManager.Instance.SpawnBullet(launcher.bulletId, transform.position, bulletDirection,
-                    layerMask, maxDistance, ability);
-            }
-
+            // foreach (var launcher in data.bulletLaunchers)
+            // {
+            //     float finalAngle = launcher.angleOffset +
+            //                        UnityEngine.Random.Range(-launcher.randomSpread, launcher.randomSpread);
+            //     Vector2 bulletDirection = Quaternion.Euler(0, 0, finalAngle) * fireDirection;
+            //     // 调用子弹管理器生成子弹
+            //     BulletManager.Instance.SpawnBullet(launcher.bulletId, transform.position, bulletDirection,
+            //         layerMask, maxDistance, ability);
+            // }
+            // float finalAngle = launcher.angleOffset +
+            //                    UnityEngine.Random.Range(-launcher.randomSpread, launcher.randomSpread);
+            var finalAngle = 0;
+            var bulletId = "TestBullet";
+            Vector2 bulletDirection = Quaternion.Euler(0, 0, finalAngle) * fireDirection;
+            // 调用子弹管理器生成子弹
+            BulletManager.Instance.SpawnBullet(bulletId, transform.position, bulletDirection,
+                layerMask, maxDistance, ability);
             // 使用外部计算好的值来重置冷却
             this.fireCountdown = nextCooldown;
         }

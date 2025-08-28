@@ -231,6 +231,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statsController: {fileID: 8800710216785378734}
-  enemyData: {fileID: 11400000, guid: 530a8267844501f4abcc5da27665ee0d, type: 2}
+  enemyData:
+    id: 0
+    code: 
+    displayName: 
+    description: 
+    icon: 
+    baseHp: 0
+    hpPerWave: 0
+    baseSpeed: 0
+    baseDamage: 0
+    damagePerWave: 0
+    knockbackResistance: 0
+    materialsDropped: 0
+    consumableDropRate: 0
+    lootCrateDropRate: 0
+    firstWave: 0
+    tags: []
+  spriteRenderer: {fileID: 8739885494489463363}
   killedEventSent: 0
   DiedEvent: {fileID: 11400000, guid: 87f5303ad67bfe7469b2bcccfe46859c, type: 2}

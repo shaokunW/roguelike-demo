@@ -73,7 +73,11 @@ namespace CatAndHuman.Configs.Runtime
                 baseAttackRange = DesrUtils.ParseInt(data,"baseAttackRange"),
                 basePickupRange = DesrUtils.ParseInt(data,"basePickupRange"),
                 // --- List ---
-                statModifiers = DesrUtils.ParseList(data,"statModifierCodes").Select(StatModifier.Parse).ToList()
+                statModifiers = DesrUtils.ParseList(data,"statModifierCodes").Select(StatModifier.Parse).ToList(),
+                defaultWeaponCodes = DesrUtils.ParseList(data,"defaultWeaponCodes"),
+                defaultItemCodes = DesrUtils.ParseList(data,"defaultItemCodes"),
+                tags = DesrUtils.ParseList(data,"tags"),
+
             };
         }
     }

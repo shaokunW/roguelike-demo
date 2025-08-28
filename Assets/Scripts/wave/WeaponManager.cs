@@ -120,6 +120,7 @@ namespace CatAndHuman
                 var data = i < weaponRows.Count ? weaponRows[i] : null;
                 if (data == null)
                 {
+                    Debug.Log("data is null");
                     controller.gameObject.SetActive(false);
                 }
                 else

@@ -38,7 +38,7 @@ namespace CatAndHuman.Configs.Runtime
         public float baseCritChance;
         public List<StatModifier> statModifiers;
         public List<string> tags;
-        public List<BulletLauncher> bulletLaunchers;
+        // public List<BulletLauncher> bulletLaunchers;
 
         public static WeaponRow Deserialize(Dictionary<string, string> data)
         {

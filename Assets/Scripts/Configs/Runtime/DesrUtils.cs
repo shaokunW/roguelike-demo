@@ -44,7 +44,8 @@ namespace CatAndHuman.Configs.Runtime
         {
             try
             {
-                return ParseList(data[k]);
+                var list = ParseList(data[k]);
+                return list;
             }
             catch (Exception e)
             {

@@ -21,12 +21,6 @@ namespace CatAndHuman.Editor.Scripts
     [CreateAssetMenu(menuName = "Config/Config Registry", fileName = "ConfigRegistry")]
     public class ConfigRegistry : ScriptableObject
     {
-        public TableEntry[] entries = new TableEntry[]
-        {
-            new TableEntry
-                { csvName = "characters", assetName = "CharacterTable" },
-            new TableEntry
-                { csvName = "weapons", assetName = "WeaponTable" },
-        };
+        public TableEntry[] entries;
     }
 }
